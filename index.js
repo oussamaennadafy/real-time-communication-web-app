@@ -22,7 +22,7 @@ io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
     socket.to(roomId).broadcast.emit('user-connected', userId)
-
+    
     socket.on('disconnect', () => {
       socket.to(roomId).broadcast.emit('user-disconnected', userId)
     })
@@ -30,4 +30,4 @@ io.on('connection', socket => {
 })
 
 
-server.listen(3000, "192.168.11.100");
+server.listen(3000);
